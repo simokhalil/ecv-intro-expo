@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Actions } from 'react-native-router-flux';
-import { Button, StyleSheet, Text, View } from 'react-native';
+import { Button, Dimensions, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import CustomCard from '../components/CustomCard';
 import SectionTitle from '../components/SectionTitle';
+
+import AnimalsList from '../data/animals.json';
+
+const { width } = Dimensions.get('window'); 
 
 const styles = StyleSheet.create({
   container: {
@@ -11,6 +15,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+    marginVertical: 10,
+    marginHorizontal: 5,
+  },
+  scrolHorizontal: {
+    width: '100%'
+  },
+  customCard: {
+    width: 200,
   },
 });
 
@@ -27,16 +39,53 @@ const HomePage = () => {
     Actions['page2']();
   };
 
+  const onLikeClick = (likes) => {
+    console.log('likes', likes);
+  };
+
   return (
-    <View style={styles.container}>
+    <ScrollView>
+      <View style={styles.container}>
 
-      <CustomCard />
+        {/* <ScrollView
+          style={styles.scrolHorizontal}
+          horizontal
+          snapToOffsets={[210, 410, 640, 860, 1080]}
+          snapToAlignment="start"
+        >
+          <CustomCard
+            styles={styles.customCard}
+            withFooter={false}
+          />
+          <CustomCard
+            styles={styles.customCard}
+            withFooter={false}
+          />
+          <CustomCard
+            styles={styles.customCard}
+            withFooter={false}
+          />
+          <CustomCard
+            styles={styles.customCard}
+            withFooter={false}
+          />
+          <CustomCard
+            styles={styles.customCard}
+            withFooter={false}
+          />
+        </ScrollView> */}
 
-      <CustomCard />
-      <CustomCard />
-      <CustomCard />
-      <CustomCard /><CustomCard />
-
+        {AnimalsList.map((animal, index) => (
+          <CustomCard
+            key={index}
+            name={animal.name}
+            type={animal.type}
+            image={animal.image}
+            likes={animal.likes}
+            comments={animal.comments}
+            onLikeClick={onLikeClick}
+          />
+        ))}
 
         <SectionTitle
           title="Home Page"
@@ -47,7 +96,8 @@ const HomePage = () => {
           title="Page 2"
           onPress={onButtonPress}
         />
-      </View> 
+      </View>
+    </ScrollView>
   );
 }
 
