@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Actions } from 'react-native-router-flux';
-import { Button, Dimensions, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Button, Dimensions, ScrollView, StyleSheet, TouchableOpacity, View } from 'react-native';
 
 import CustomCard from '../components/CustomCard';
 import SectionTitle from '../components/SectionTitle';
@@ -76,15 +76,16 @@ const HomePage = () => {
         </ScrollView> */}
 
         {AnimalsList.map((animal, index) => (
-          <CustomCard
-            key={index}
-            name={animal.name}
-            type={animal.type}
-            image={animal.image}
-            likes={animal.likes}
-            comments={animal.comments}
-            onLikeClick={onLikeClick}
-          />
+          <TouchableOpacity key={index} onPress={() => console.log('Test')}>
+            <CustomCard
+              name={animal.name}
+              type={animal.type}
+              image={animal.image}
+              likes={animal.likes}
+              comments={animal.comments}
+              onLikeClick={onLikeClick}
+            />
+          </TouchableOpacity>
         ))}
 
         <SectionTitle
