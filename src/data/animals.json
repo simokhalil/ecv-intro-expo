@@ -3,17 +3,23 @@
   "type": "Chien",
   "likes": 17,
   "comments": 5,
-  "image": "https://static.nationalgeographic.fr/files/styles/image_1900/public/koalas-australia-001.jpg"
+  "image": "https://static.nationalgeographic.fr/files/styles/image_1900/public/koalas-australia-001.jpg",
+  "lat": 47.2183715,
+  "lng": -1.553621
 }, {
   "name": "Tigro",
   "type": "Castor",
   "likes": 99,
   "comments": 0,
-  "image": "https://img.aws.la-croix.com/2017/06/13/1200854596/Plusieurs-castors-observes-lEssonne_2_728_500.jpg"
+  "image": "https://img.aws.la-croix.com/2017/06/13/1200854596/Plusieurs-castors-observes-lEssonne_2_728_500.jpg",
+  "lat": 47.217330,
+  "lng": -1.565112
 }, {
   "name": "Otso",
   "type": "Marmotte",
   "likes": 55,
   "comments": 15,
-  "image": "https://img.bfmtv.com/c/1256/708/2700c69/402a533ea12cd238c63da91e6.jpeg"
+  "image": "https://img.bfmtv.com/c/1256/708/2700c69/402a533ea12cd238c63da91e6.jpeg",
+  "lat": 47.210520,
+  "lng": -1.553493
 }]
