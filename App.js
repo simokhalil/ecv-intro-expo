@@ -47,16 +47,16 @@ export default function App() {
       <Router>
         <Tabs
           key="root"
-          tabBarStyle={{ backgroundColor: '#0000ff' }}
+          tabBarStyle={{ backgroundColor: '#bf5f82' }}
           labelStyle={{ color: '#fff', fontSize: 18 }}
           // tabBarComponent={CustomTabBar}
+          navigationBarStyle={{ backgroundColor: '#f48fb1' }}
+          renderTitle={<NavBarTitle title="" imageSrc="https://www.hicom.fr/wp-content/uploads/2017/09/Logo_TV_2015.png" />}
         >
           <Scene
             key="homepage"
             component={HomePage}
             title="Home Page"
-            navigationBarStyle={{ backgroundColor: '#00ff00' }}
-            renderTitle={<NavBarTitle title="Test" imageSrc="https://image.shutterstock.com/image-vector/abstract-blurred-gradient-mesh-background-260nw-460041640.jpg" />}
           />
           <Scene key="page2" component={Page2} title="Page 2" />
           <Scene key="page3" component={Page3} title="Page 3" />
