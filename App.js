@@ -5,11 +5,12 @@ import { Image, View } from 'react-native';
 import { AppLoading } from 'expo';
 import { Container, Text } from 'native-base';
 import * as Font from 'expo-font';
-import { Ionicons } from '@expo/vector-icons';
+import { Ionicons, FontAwesome } from '@expo/vector-icons';
 
 import CustomTabBar from './src/components/CustomTabBar';
 import HomePage from './src/pages/HomePage';
 import Page2 from './src/pages/Page2';
+import Page3 from './src/pages/page3';
 
 const NavBarTitle = ({ title, imageSrc }) => (
   <View style={{ flexDirection: 'row', alignItems: 'center' }}>
@@ -28,6 +29,7 @@ export default function App() {
         Roboto: require('native-base/Fonts/Roboto.ttf'),
         Roboto_medium: require('native-base/Fonts/Roboto_medium.ttf'),
         ...Ionicons.font,
+        ...FontAwesome.font,
       });
 
       setIsReady(true);
@@ -57,6 +59,7 @@ export default function App() {
             renderTitle={<NavBarTitle title="Test" imageSrc="https://image.shutterstock.com/image-vector/abstract-blurred-gradient-mesh-background-260nw-460041640.jpg" />}
           />
           <Scene key="page2" component={Page2} title="Page 2" />
+          <Scene key="page3" component={Page3} title="Page 3" />
         </Tabs>
       </Router>
     </Container>
