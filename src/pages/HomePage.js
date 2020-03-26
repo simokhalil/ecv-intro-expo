@@ -5,6 +5,7 @@ import { Button, Icon, Input, Item } from 'native-base';
 
 import CustomCard from '../components/CustomCard';
 import SectionTitle from '../components/SectionTitle';
+import { withContext } from '../app/AppContext';
 
 import AnimalsList from '../data/animals.json';
 
@@ -44,7 +45,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const HomePage = () => {
+const HomePage = ({ context }) => {
   const [myText, setMyText] = useState('Chargement...');
 
   const [selectedType, setSelectedType] = useState(null);
@@ -70,11 +71,14 @@ const HomePage = () => {
   };
 
   const goToDetails = (animal) => {
+    context.set({ currentAnimal: animal });
+
     Actions.details({
-      animal,
       title: animal.name,
     });
   };
+
+  console.log('context', context);
 
   return (
     <ScrollView>
@@ -148,4 +152,6 @@ const HomePage = () => {
   );
 }
 
-export default HomePage;
+export default withContext(
+  HomePage,
+);

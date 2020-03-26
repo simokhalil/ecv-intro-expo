@@ -2,6 +2,8 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { ActivityIndicator, Dimensions, Image, ScrollView, StyleSheet, Text, View } from 'react-native';
 
+import { withContext } from '../app/AppContext';
+
 const { width } = Dimensions.get('window');
 
 const styles = StyleSheet.create({
@@ -28,7 +30,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const AnimalDetails = ({ animal }) => {
+const AnimalDetails = ({ context: { data: { currentAnimal: animal } } }) => {
 
   if (!animal) {
     return (
@@ -57,4 +59,6 @@ AnimalDetails.propTypes = {
   animal: PropTypes.object.isRequired,
 };
 
-export default AnimalDetails;
+export default withContext(
+  AnimalDetails,
+);

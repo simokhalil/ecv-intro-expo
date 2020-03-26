@@ -13,6 +13,8 @@ import HomePage from './src/pages/HomePage';
 import Page2 from './src/pages/Page2';
 import Page3 from './src/pages/page3';
 
+import { ContextProviderComponent } from './src/app/AppContext';
+
 const NavBarTitle = ({ title, imageSrc }) => (
   <View style={{ flexDirection: 'row', alignItems: 'center' }}>
     <Image source={{ uri: imageSrc }} style={{ width: 30, height: 30 }} />
@@ -44,32 +46,34 @@ export default function App() {
   }
 
   return (
-    <Container>
-      <Router>
-        <Tabs
-        
-          key="root"
-          tabBarStyle={{ backgroundColor: '#bf5f82' }}
-          labelStyle={{ color: '#fff', fontSize: 18 }}
-          // tabBarComponent={CustomTabBar}
-          navigationBarStyle={{ backgroundColor: '#f48fb1' }}
-          renderTitle={<NavBarTitle title="" imageSrc="https://www.hicom.fr/wp-content/uploads/2017/09/Logo_TV_2015.png" />}
-        >
-          <Stack key="home">
-            <Scene
-              key="homepage"
-              component={HomePage}
-              title="Home Page"
-              initial
-            />
+    <ContextProviderComponent>
+      <Container>
+        <Router>
+          <Tabs
+          
+            key="root"
+            tabBarStyle={{ backgroundColor: '#bf5f82' }}
+            labelStyle={{ color: '#fff', fontSize: 18 }}
+            // tabBarComponent={CustomTabBar}
+            navigationBarStyle={{ backgroundColor: '#f48fb1' }}
+            renderTitle={<NavBarTitle title="" imageSrc="https://www.hicom.fr/wp-content/uploads/2017/09/Logo_TV_2015.png" />}
+          >
+            <Stack key="home">
+              <Scene
+                key="homepage"
+                component={HomePage}
+                title="Home Page"
+                initial
+              />
 
-            <Scene key="details" component={AnimalDetails} title="" />
-          </Stack>
+              <Scene key="details" component={AnimalDetails} title="" />
+            </Stack>
 
-          <Scene key="page2" component={Page2} title="Page 2" />
-          <Scene key="page3" component={Page3} title="Page 3" />
-        </Tabs>
-      </Router>
-    </Container>
+            <Scene key="page2" component={Page2} title="Page 2" />
+            <Scene key="page3" component={Page3} title="Page 3" />
+          </Tabs>
+        </Router>
+      </Container>
+    </ContextProviderComponent>
   );
 }
