@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Actions } from 'react-native-router-flux';
-import { Dimensions, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Alert, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { Button, Icon, Input, Item } from 'native-base';
 
 import CustomCard from '../components/CustomCard';
-import SectionTitle from '../components/SectionTitle';
+import CustomModal from '../components/CustomModal';
 
 import AnimalsList from '../data/animals.json';
-
-const { width } = Dimensions.get('window'); 
 
 const styles = StyleSheet.create({
   container: {
@@ -51,6 +49,8 @@ const HomePage = () => {
   const [filteredAnimals, setFilteredAnimals] = useState(AnimalsList);
   const [searchText, setSearchText] = useState('');
 
+  const modal = React.useRef();
+
   useEffect(() => {
     const newTab = AnimalsList.filter((item) => !selectedType ? true : item.type === selectedType);
     setFilteredAnimals(newTab);
@@ -67,6 +67,18 @@ const HomePage = () => {
 
   const onLikeClick = (likes) => {
     console.log('likes', likes);
+    modal.current.show();
+  };
+
+  const onCommentClick = (animal) => {
+    Alert.alert(
+      animal.name,
+      `Commentaires : ${animal.comments}`,
+      [
+        {text: 'OK', onPress: () => console.log('OK')},
+      ],
+      { cancelable: false },
+    );
   };
 
   const goToDetails = (animal) => {
@@ -140,10 +152,15 @@ const HomePage = () => {
                 likes={animal.likes}
                 comments={animal.comments}
                 onLikeClick={onLikeClick}
+                onCommentClick={() => onCommentClick(animal)}
               />
             </TouchableOpacity>
           ))}
       </View>
+
+      <CustomModal
+        ref={modal}
+      />
     </ScrollView>
   );
 }

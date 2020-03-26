@@ -22,6 +22,7 @@ export default class CustomCard extends Component {
       comments,
       image,
       onLikeClick,
+      onCommentClick,
     } = this.props;
 
     return (
@@ -51,7 +52,7 @@ export default class CustomCard extends Component {
               </Button>
             </Left>
             <Body>
-              <Button transparent>
+              <Button transparent onPress={() => onCommentClick()}>
                 <Icon active name="chatbubbles" />
                 <Text>{comments} Comments</Text>
               </Button>
@@ -75,10 +76,12 @@ CustomCard.propTypes = {
   likes: PropTypes.number.isRequired,
   image: PropTypes.string,
   onLikeClick: PropTypes.func.isRequired,
+  onCommentClick: PropTypes.func,
 };
 
 CustomCard.defaultProps = {
   styles: {},
   withFooter: true,
   image: null,
+  onCommentClick: () => {},
 };
