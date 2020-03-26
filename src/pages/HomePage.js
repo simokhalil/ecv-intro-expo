@@ -69,6 +69,13 @@ const HomePage = () => {
     console.log('likes', likes);
   };
 
+  const goToDetails = (animal) => {
+    Actions.details({
+      animal,
+      title: animal.name,
+    });
+  };
+
   return (
     <ScrollView>
       <View style={styles.container}>
@@ -125,7 +132,7 @@ const HomePage = () => {
 
         {filteredAnimals
           .map((animal, index) => (
-            <TouchableOpacity key={index} onPress={() => console.log('Test')}>
+            <TouchableOpacity key={index} onPress={() => goToDetails(animal)}>
               <CustomCard
                 name={animal.name}
                 type={animal.type}

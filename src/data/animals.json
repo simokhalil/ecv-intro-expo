@@ -1,4 +1,5 @@
 [{
+  "id": 1,
   "name": "Koala",
   "type": "Chien",
   "likes": 17,
@@ -7,6 +8,7 @@
   "lat": 47.2183715,
   "lng": -1.553621
 }, {
+  "id": 2,
   "name": "Tigro",
   "type": "Castor",
   "likes": 99,
@@ -15,6 +17,7 @@
   "lat": 47.217330,
   "lng": -1.565112
 }, {
+  "id": 3,
   "name": "Otso",
   "type": "Marmotte",
   "likes": 55,

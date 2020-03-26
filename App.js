@@ -1,5 +1,5 @@
 import React from 'react';
-import { Router, Tabs, Scene } from 'react-native-router-flux';
+import { Router, Tabs, Scene, Stack } from 'react-native-router-flux';
 import { Image, View } from 'react-native';
 
 import { AppLoading } from 'expo';
@@ -7,6 +7,7 @@ import { Container, Text } from 'native-base';
 import * as Font from 'expo-font';
 import { Ionicons, FontAwesome } from '@expo/vector-icons';
 
+import AnimalDetails from './src/pages/AnimalDetails';
 import CustomTabBar from './src/components/CustomTabBar';
 import HomePage from './src/pages/HomePage';
 import Page2 from './src/pages/Page2';
@@ -46,6 +47,7 @@ export default function App() {
     <Container>
       <Router>
         <Tabs
+        
           key="root"
           tabBarStyle={{ backgroundColor: '#bf5f82' }}
           labelStyle={{ color: '#fff', fontSize: 18 }}
@@ -53,11 +55,17 @@ export default function App() {
           navigationBarStyle={{ backgroundColor: '#f48fb1' }}
           renderTitle={<NavBarTitle title="" imageSrc="https://www.hicom.fr/wp-content/uploads/2017/09/Logo_TV_2015.png" />}
         >
-          <Scene
-            key="homepage"
-            component={HomePage}
-            title="Home Page"
-          />
+          <Stack key="home">
+            <Scene
+              key="homepage"
+              component={HomePage}
+              title="Home Page"
+              initial
+            />
+
+            <Scene key="details" component={AnimalDetails} title="" />
+          </Stack>
+
           <Scene key="page2" component={Page2} title="Page 2" />
           <Scene key="page3" component={Page3} title="Page 3" />
         </Tabs>
